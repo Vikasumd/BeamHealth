@@ -65,7 +65,7 @@ The backend follows **Clean Architecture** principles with SOLID design patterns
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Vikasumd/BeamHealth.git
    cd BeamHealth
    ```
 
