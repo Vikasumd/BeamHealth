@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "payer": "Blue Cross",
+    "plan": "Blue Shield PPO",
+    "eligible": true,
+    "coPay": 25,
+    "reason": null
+  },
+  {
+    "id": 2,
+    "payer": "Aetna",
+    "plan": "Aetna Choice",
+    "eligible": true,
+    "coPay": 30,
+   "reason": null
+  },
+  {
+    "id": 3,
+    "payer": "Cigna",
+    "plan": "Cigna HealthCare",
+    "eligible": false,
+    "coPay": null,
+    "reason": "Plan not active in this network"
+  },
+  {
+    "id": 4,
+    "payer": "Cigna",
+    "plan": "Cigna Open Access",
+    "eligible": true,
+    "coPay": 20,
+    "reason": null
+  },
+  {
+    "id": 5,
+    "payer": "UnitedHealthcare",
+    "plan": "UHC Choice Plus",
+    "eligible": true,
+    "coPay": 35,
+    "reason": null
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "first_name": "John",
+    "last_name": "Smith",
+    "dob": "1985-03-15",
+    "email": "john.smith@email.com",
+    "phone": "555-0101",
+    "gender": "M"
+  },
+  {
+    "id": 2,
+    "first_name": "Emily",
+    "last_name": "Johnson",
+    "dob": "1992-07-22",
+    "email": "emily.johnson@email.com",
+    "phone": "555-0201",
+    "gender": "F"
+  },
+  {
+    "id": 3,
+    "first_name": "Michael",
+    "last_name": "Chen",
+    "dob": "1978-11-03",
+    "email": "michael.chen@email.com",
+    "phone": "555-0301",
+    "gender": "M"
+  },
+  {
+    "id": 4,
+    "first_name": "vikas",
+    "last_name": "patel",
+    "dob": "2025-12-05",
+    "email": "vikaspatel@gmail",
+    "phone": "332333323",
+    "gender": "M"
+  }
+]
