@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import api from "./api/client";
-import PatientSelector from "./components/PatientSelector";
+import PatientSearch from "./components/PatientSearch";
+import InsuranceSearch from "./components/InsuranceSearch";
 import NewPatientForm from "./components/NewPatientForm";
-import WorkflowForm from "./components/WorkflowForm";
 import IntakePanel from "./components/IntakePanel";
 import EligibilityPanel from "./components/EligibilityPanel";
 import RoutingPanel from "./components/RoutingPanel";
@@ -11,8 +11,8 @@ import FollowUpPanel from "./components/FollowUpPanel";
 
 function App() {
   const [patients, setPatients] = useState([]);
-  const [selectedPatientId, setSelectedPatientId] = useState("");
-  const [insuranceId, setInsuranceId] = useState("");
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  const [selectedInsurance, setSelectedInsurance] = useState(null);
   const [showNewPatientForm, setShowNewPatientForm] = useState(false);
 
   const [workflowResult, setWorkflowResult] = useState(null);
@@ -43,7 +43,7 @@ function App() {
     setWorkflowResult(null);
     setSelectedSlotId(null);
 
-    if (!selectedPatientId || !insuranceId) {
+    if (!selectedPatient || !selectedInsurance) {
       setError("Please select a patient and insurance plan.");
       return;
     }
@@ -51,8 +51,8 @@ function App() {
     try {
       setLoadingWorkflow(true);
       const res = await api.post("/workflow/run", {
-        patientId: Number(selectedPatientId),
-        insuranceId: Number(insuranceId)
+        patientId: selectedPatient.id,
+        insuranceId: selectedInsurance.id
       });
       setWorkflowResult(res.data);
     } catch (err) {
@@ -74,8 +74,8 @@ function App() {
       setBookingLoading(true);
       const res = await api.post("/workflow/book", {
         appointmentId: Number(selectedSlotId),
-        patientId: Number(selectedPatientId),
-        insuranceId: Number(insuranceId)
+        patientId: selectedPatient.id,
+        insuranceId: selectedInsurance.id
       });
       setFollowUpResult(res.data);
     } catch (err) {
@@ -87,15 +87,34 @@ function App() {
   };
 
   const handleNewPatientCreated = (newPatient) => {
-    // Add new patient to list
     setPatients([...patients, newPatient]);
-    // Select the new patient
-    setSelectedPatientId(String(newPatient.id));
-    // Close the form
+    setSelectedPatient(newPatient);
     setShowNewPatientForm(false);
-    // Clear any previous workflow results
     setWorkflowResult(null);
     setFollowUpResult(null);
+  };
+
+  // Reset all fields when patient is changed or cleared
+  const handlePatientSelect = (patient) => {
+    setSelectedPatient(patient);
+    // If patient is cleared, reset everything
+    if (!patient) {
+      setWorkflowResult(null);
+      setFollowUpResult(null);
+      setSelectedSlotId(null);
+      setError("");
+    }
+  };
+
+  // Reset workflow when insurance is changed
+  const handleInsuranceSelect = (insurance) => {
+    setSelectedInsurance(insurance);
+    if (!insurance || (selectedInsurance && insurance?.id !== selectedInsurance?.id)) {
+      setWorkflowResult(null);
+      setFollowUpResult(null);
+      setSelectedSlotId(null);
+      setError("");
+    }
   };
 
   return (
@@ -119,26 +138,27 @@ function App() {
           <section className="card">
             <h2>1. Select Patient & Insurance</h2>
             
-            <div className="patient-selection">
-              <PatientSelector
+            <div className="search-row">
+              <PatientSearch
                 patients={patients}
-                selectedPatientId={selectedPatientId}
-                onChange={setSelectedPatientId}
+                selectedPatient={selectedPatient}
+                onSelect={handlePatientSelect}
+                onCreateNew={() => setShowNewPatientForm(true)}
               />
-              <button 
-                className="new-patient-btn"
-                onClick={() => setShowNewPatientForm(true)}
-              >
-                + New Patient
-              </button>
+              
+              <InsuranceSearch
+                selectedInsurance={selectedInsurance}
+                onSelect={handleInsuranceSelect}
+              />
             </div>
 
-            <WorkflowForm
-              insuranceId={insuranceId}
-              onInsuranceChange={setInsuranceId}
-              onRunWorkflow={handleRunWorkflow}
-              loading={loadingWorkflow}
-            />
+            <button 
+              className="primary-btn" 
+              onClick={handleRunWorkflow} 
+              disabled={loadingWorkflow || !selectedPatient || !selectedInsurance}
+            >
+              {loadingWorkflow ? "Running workflow..." : "Run Unified Workflow"}
+            </button>
 
             {error && <div className="error-box">{error}</div>}
           </section>

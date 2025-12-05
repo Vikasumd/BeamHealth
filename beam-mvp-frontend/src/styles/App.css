@@ -342,6 +342,175 @@ select:focus {
   margin-bottom: 0;
 }
 
+/* Search row for autocomplete fields */
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .search-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Autocomplete wrapper */
+.autocomplete-wrapper {
+  position: relative;
+}
+
+.autocomplete-wrapper .field {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.input-selected {
+  border-color: #06b6d4 !important;
+  background: #171717 !important;
+}
+
+.selected-badge {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #06b6d4;
+  color: #0a0a0a;
+}
+
+.badge-eligible {
+  background: #06b6d4;
+}
+
+.badge-denied {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* Autocomplete dropdown */
+.autocomplete-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #171717;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: dropdownFade 0.15s ease-out;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-header {
+  padding: 12px 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #262626;
+}
+
+.dropdown-item {
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.dropdown-item:hover {
+  background: #262626;
+}
+
+.dropdown-item--selected {
+  background: rgba(6, 182, 212, 0.1);
+  border-left: 3px solid #06b6d4;
+}
+
+.item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.item-id {
+  font-size: 0.8rem;
+  color: #737373;
+}
+
+.item-sub {
+  font-size: 0.85rem;
+  color: #737373;
+}
+
+.eligibility-badge {
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.eligibility-badge.eligible {
+  background: rgba(6, 182, 212, 0.2);
+  color: #06b6d4;
+}
+
+.eligibility-badge.denied {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.dropdown-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: #737373;
+}
+
+.dropdown-empty p {
+  margin: 0;
+}
+
+.dropdown-footer {
+  padding: 14px 16px;
+  border-top: 1px solid #262626;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.dropdown-footer:hover {
+  background: #262626;
+}
+
+.create-new-btn {
+  color: #06b6d4;
+  font-weight: 600;
+}
+
 .new-patient-btn {
   padding: 14px 24px;
   border-radius: 12px;
@@ -435,4 +604,198 @@ select:focus {
 .secondary-btn:hover {
   border-color: #404040;
   color: #ffffff;
+}
+
+/* Enhanced Follow-Up Panel */
+.followup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.followup-section {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.followup-section:hover {
+  border-color: #404040;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #171717;
+  border-radius: 10px;
+}
+
+.section-content {
+  flex: 1;
+}
+
+.section-content h3 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.section-content p {
+  margin: 8px 0;
+  color: #a3a3a3;
+  line-height: 1.6;
+}
+
+.success-text {
+  color: #06b6d4 !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.appointment-details {
+  background: #171717;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.detail-row:not(:last-child) {
+  border-bottom: 1px solid #262626;
+}
+
+.detail-icon {
+  font-size: 1.2rem;
+}
+
+.detail-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.section-note {
+  font-size: 0.9rem;
+  color: #737373 !important;
+  font-style: italic;
+}
+
+.section-subtitle {
+  color: #a3a3a3;
+  margin-bottom: 16px !important;
+}
+
+.eligibility-grid {
+  background: #171717;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.eligibility-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.eligibility-item:not(:last-child) {
+  border-bottom: 1px solid #262626;
+}
+
+.item-label {
+  color: #737373;
+  font-weight: 500;
+}
+
+.item-value {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.item-value.eligible {
+  color: #06b6d4;
+}
+
+.item-value.denied {
+  color: #ef4444;
+}
+
+.item-value.copay {
+  font-size: 1.3rem;
+  color: #06b6d4;
+}
+
+.reminder-list,
+.workflow-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  background: #171717;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.reminder-list li,
+.workflow-list li {
+  padding: 8px 0;
+  color: #a3a3a3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reminder-list li:not(:last-child),
+.workflow-list li:not(:last-child) {
+  border-bottom: 1px solid #262626;
+}
+
+.reminder-list li::before {
+  content: "•";
+  color: #06b6d4;
+  font-weight: bold;
+}
+
+.check-icon {
+  color: #06b6d4;
+  font-weight: bold;
+}
+
+.highlight-note {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #06b6d4 !important;
+  font-weight: 600;
+  font-style: normal;
+  margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .followup-section {
+    flex-direction: column;
+  }
+  
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
 }
