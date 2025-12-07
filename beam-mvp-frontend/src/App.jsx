@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "./api/client";
 import EmployeeLookupForm from "./components/EmployeeLookupForm";
 import InsuranceSearch from "./components/InsuranceSearch";
@@ -115,6 +116,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
+        <Link to="/" className="back-link">← Back to Home</Link>
         <h1>Beam Front-Desk <span>Copilot</span></h1>
         <p className="subtitle">
           Employee Lookup → Eligibility → Smart Routing → Scheduling → Follow-up
