@@ -889,7 +889,6 @@ select:focus {
   margin-bottom: 16px;
 }
 
-/* Animation for form reveal */
 @keyframes revealForm {
   from {
     opacity: 0;
@@ -901,3 +900,2256 @@ select:focus {
   }
 }
 
+/* =============================================
+   INVOICE MANAGEMENT STYLES
+   ============================================= */
+
+/* Invoice Stats */
+.invoice-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #171717 0%, #1a1a1a 100%);
+  border: 1px solid #262626;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: #404040;
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  border-radius: 12px;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.stat-value.outstanding {
+  color: #f59e0b;
+}
+
+.stat-value.overdue {
+  color: #ef4444;
+}
+
+.stat-value.paid {
+  color: #10b981;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .invoice-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .invoice-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Invoice Filters */
+.invoice-filters {
+  margin-bottom: 24px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.filter-group.search-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-input,
+.filter-select {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #262626;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #06b6d4;
+  background: #171717;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.date-input {
+  width: 150px;
+}
+
+.clear-filters-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #404040;
+  background: transparent;
+  color: #a3a3a3;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-filters-btn:hover {
+  border-color: #06b6d4;
+  color: #06b6d4;
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-group {
+    width: 100%;
+  }
+  
+  .filter-input,
+  .filter-select,
+  .date-input {
+    width: 100%;
+  }
+}
+
+/* Invoice List Table */
+.invoice-list-container {
+  background: #171717;
+  border-radius: 16px;
+  border: 1px solid #262626;
+  overflow: hidden;
+}
+
+.invoice-table-wrapper {
+  overflow-x: auto;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.invoice-table th {
+  text-align: left;
+  padding: 16px 20px;
+  background: #0f0f0f;
+  color: #737373;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #262626;
+  white-space: nowrap;
+}
+
+.invoice-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #1a1a1a;
+  color: #a3a3a3;
+  vertical-align: middle;
+}
+
+.invoice-row {
+  transition: background 0.15s ease;
+}
+
+.invoice-row:hover {
+  background: #1a1a1a;
+}
+
+.invoice-row:last-child td {
+  border-bottom: none;
+}
+
+.invoice-number {
+  font-weight: 700;
+  color: #06b6d4;
+  font-family: 'Fira Code', monospace;
+}
+
+.patient-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.payer-name {
+  color: #737373;
+}
+
+.amount {
+  font-weight: 600;
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+}
+
+.balance {
+  font-weight: 700;
+  font-family: 'Fira Code', monospace;
+}
+
+.balance.has-balance {
+  color: #f59e0b;
+}
+
+.balance.zero-balance {
+  color: #10b981;
+}
+
+.overdue-date {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Claim Type Badge */
+.claim-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #262626;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  white-space: nowrap;
+}
+
+/* Invoice Status Badges */
+.invoice-status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.status-draft {
+  background: rgba(115, 115, 115, 0.2);
+  color: #a3a3a3;
+}
+
+.status-pending {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.status-submitted {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.status-paid {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.status-partial {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
+.status-denied {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.status-appealed {
+  background: rgba(236, 72, 153, 0.2);
+  color: #ec4899;
+}
+
+/* Invoice List Footer */
+.invoice-list-footer {
+  padding: 16px 20px;
+  background: #0f0f0f;
+  border-top: 1px solid #262626;
+}
+
+.results-count {
+  font-size: 0.85rem;
+  color: #737373;
+}
+
+/* Empty and Loading States */
+.invoice-list-empty,
+.invoice-list-loading {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.invoice-list-empty h3 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.invoice-list-empty p {
+  margin: 0;
+  color: #737373;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #262626;
+  border-top-color: #06b6d4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.invoice-list-loading p {
+  color: #737373;
+  margin: 0;
+}
+
+/* Responsive Table */
+@media (max-width: 900px) {
+  .invoice-table {
+    font-size: 0.8rem;
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    padding: 12px 14px;
+  }
+}
+
+/* Clickable rows */
+.invoice-row.clickable {
+  cursor: pointer;
+}
+
+.invoice-row.clickable:hover {
+  background: #1f1f1f;
+}
+
+/* =============================================
+   TAB NAVIGATION STYLES
+   ============================================= */
+
+.invoice-nav-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px;
+  background: #171717;
+  border-radius: 16px;
+  border: 1px solid #262626;
+  overflow-x: auto;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  color: #737373;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-tab:hover {
+  background: #262626;
+  color: #a3a3a3;
+}
+
+.nav-tab--active {
+  background: #06b6d4;
+  color: #0a0a0a;
+}
+
+.nav-tab--active:hover {
+  background: #22d3ee;
+  color: #0a0a0a;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+}
+
+.tab-label {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .invoice-nav-tabs {
+    gap: 4px;
+    padding: 6px;
+  }
+  
+  .nav-tab {
+    padding: 10px 14px;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .tab-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* =============================================
+   INVOICE DETAIL STYLES
+   ============================================= */
+
+.invoice-detail-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.invoice-detail-empty .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.invoice-detail-empty h3 {
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.invoice-detail-empty p {
+  margin: 0 0 24px;
+  color: #737373;
+}
+
+.invoice-detail .detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #06b6d4;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.detail-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.detail-card {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.detail-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-card h3 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: #737373;
+  font-size: 0.85rem;
+}
+
+.info-value {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.info-value.claim-type {
+  text-transform: capitalize;
+}
+
+.financial-card {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+}
+
+.financial-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.financial-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.financial-label {
+  color: #737373;
+}
+
+.financial-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.financial-value.paid {
+  color: #10b981;
+}
+
+.financial-value.balance {
+  color: #f59e0b;
+}
+
+.financial-value.zero {
+  color: #10b981;
+}
+
+.codes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.code-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.code-label {
+  font-size: 0.8rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.code-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.code-tag {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+}
+
+.code-tag.cpt {
+  background: rgba(6, 182, 212, 0.2);
+  color: #06b6d4;
+}
+
+.code-tag.icd {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
+.description-section {
+  padding-top: 16px;
+  border-top: 1px solid #262626;
+}
+
+.desc-label {
+  font-size: 0.8rem;
+  color: #737373;
+  text-transform: uppercase;
+}
+
+.desc-text {
+  margin: 8px 0 0;
+  color: #a3a3a3;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =============================================
+   CREATE INVOICE / FORM STYLES
+   ============================================= */
+
+.create-invoice h2,
+.payment-posting h2,
+.ar-dashboard h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.section-subtitle {
+  margin: 0 0 24px;
+  color: #737373;
+}
+
+.success-box {
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  font-weight: 600;
+}
+
+.invoice-form,
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-section h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #a3a3a3;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #262626;
+}
+
+/* =============================================
+   PAYMENT POSTING STYLES
+   ============================================= */
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.payment-card {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.payment-card h3 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.empty-invoices {
+  text-align: center;
+  padding: 40px 20px;
+  color: #737373;
+}
+
+.invoice-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.invoice-select-item {
+  padding: 14px 16px;
+  background: #171717;
+  border: 2px solid #262626;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.invoice-select-item:hover {
+  border-color: #404040;
+}
+
+.invoice-select-item.selected {
+  border-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.select-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.select-invoice-num {
+  font-weight: 700;
+  color: #06b6d4;
+  font-family: 'Fira Code', monospace;
+}
+
+.select-balance {
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.select-item-sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #737373;
+}
+
+.selected-invoice-summary {
+  background: #171717;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9rem;
+}
+
+.summary-row span {
+  color: #737373;
+}
+
+.summary-row strong {
+  color: #ffffff;
+}
+
+.balance-amount {
+  color: #f59e0b !important;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   AR DASHBOARD STYLES
+   ============================================= */
+
+.ar-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.ar-card {
+  background: linear-gradient(135deg, #171717 0%, #1a1a1a 100%);
+  border: 1px solid #262626;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+
+.ar-card:hover {
+  transform: translateY(-2px);
+  border-color: #404040;
+}
+
+.ar-card.highlight {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.ar-card.warning .ar-card-value {
+  color: #ef4444;
+}
+
+.ar-card.success .ar-card-value {
+  color: #10b981;
+}
+
+.ar-card-icon {
+  font-size: 1.75rem;
+}
+
+.ar-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ar-card-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.ar-card-label {
+  font-size: 0.75rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.ar-section {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.ar-section h3 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/* Aging Table */
+.aging-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aging-header {
+  display: grid;
+  grid-template-columns: 1fr 80px 100px;
+  padding: 8px 12px;
+  font-size: 0.7rem;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.aging-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 100px;
+  padding: 12px;
+  background: #171717;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.aging-row.total {
+  background: #1a1a1a;
+  border: 1px solid #262626;
+  font-weight: 700;
+}
+
+.aging-row.current .aging-amount { color: #10b981; }
+.aging-row.days-30 .aging-amount { color: #f59e0b; }
+.aging-row.days-60 .aging-amount { color: #f97316; }
+.aging-row.days-90 .aging-amount { color: #ef4444; }
+.aging-row.days-90-plus .aging-amount { color: #dc2626; }
+
+.aging-label {
+  color: #a3a3a3;
+}
+
+.aging-count {
+  text-align: center;
+  color: #737373;
+}
+
+.aging-amount {
+  text-align: right;
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Status Chart */
+.status-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.status-name {
+  text-transform: capitalize;
+  color: #a3a3a3;
+}
+
+.status-count {
+  color: #737373;
+}
+
+.status-bar-track {
+  height: 8px;
+  background: #262626;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.status-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* Top Payers */
+.top-payers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #171717;
+  border-radius: 8px;
+}
+
+.payer-rank {
+  font-size: 0.8rem;
+  color: #737373;
+  font-weight: 700;
+  min-width: 24px;
+}
+
+.payer-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.payer-name {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.payer-count {
+  font-size: 0.8rem;
+  color: #737373;
+}
+
+.payer-total {
+  font-weight: 700;
+  color: #06b6d4;
+  font-family: 'Fira Code', monospace;
+}
+
+@media (max-width: 1000px) {
+  .ar-summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ar-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .ar-summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   CLAIM SUBMISSION MODAL STYLES
+   ============================================= */
+
+.claim-submission-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.submission-content {
+  background: #171717;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #737373;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #ffffff;
+}
+
+.claim-preview {
+  margin-bottom: 20px;
+}
+
+.claim-preview h4 {
+  margin: 0 0 12px;
+  color: #a3a3a3;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.preview-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preview-label {
+  font-size: 0.75rem;
+  color: #737373;
+  text-transform: uppercase;
+}
+
+.preview-value {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.preview-value.amount {
+  color: #06b6d4;
+  font-size: 1.1rem;
+}
+
+.codes-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.codes-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.codes-label {
+  font-size: 0.8rem;
+  color: #737373;
+  min-width: 120px;
+}
+
+.codes-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.edi-preview {
+  margin-bottom: 20px;
+}
+
+.edi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.edi-header h4 {
+  margin: 0;
+  color: #a3a3a3;
+}
+
+.secondary-btn.small {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.edi-content {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  overflow-x: auto;
+  color: #22c55e;
+  font-family: 'Fira Code', monospace;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.submission-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.success-content,
+.submitting-content {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.submitting-content .loading-spinner.large {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 20px;
+}
+
+.submission-details {
+  background: #0a0a0a;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #262626;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span:first-child {
+  color: #737373;
+}
+
+.submission-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  text-align: left;
+  max-width: 300px;
+  margin: 24px auto 0;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #737373;
+}
+
+.progress-step.completed {
+  color: #10b981;
+}
+
+.progress-step.active {
+  color: #f59e0b;
+}
+
+.step-icon {
+  width: 24px;
+  text-align: center;
+}
+
+/* =============================================
+   ERA IMPORT STYLES
+   ============================================= */
+
+.era-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #262626;
+}
+
+.era-import h3 {
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.era-input-section {
+  margin: 20px 0;
+}
+
+.era-textarea-wrapper {
+  margin-bottom: 16px;
+}
+
+.era-textarea-wrapper label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a3a3a3;
+}
+
+.era-textarea-wrapper textarea {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 12px;
+  color: #22c55e;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  resize: vertical;
+}
+
+.era-options {
+  display: flex;
+  gap: 12px;
+}
+
+.era-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.era-header h3 {
+  margin: 0;
+}
+
+.era-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-stat {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #737373;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.era-payments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.era-payment-item {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.payment-details {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.detail-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 80px;
+}
+
+.detail-label {
+  font-size: 0.7rem;
+  color: #737373;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-weight: 600;
+  color: #a3a3a3;
+}
+
+.detail-value.paid {
+  color: #10b981;
+}
+
+.detail-value.adjustment {
+  color: #ef4444;
+}
+
+.adjustment-reasons {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #262626;
+}
+
+.reason-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.era-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.era-success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.posted-summary {
+  margin: 24px 0;
+}
+
+.era-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.era-table th,
+.era-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #262626;
+}
+
+.era-table th {
+  color: #737373;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.era-table .amount.posted {
+  color: #10b981;
+}
+
+.era-table .amount.balance {
+  color: #f59e0b;
+}
+
+.era-table .amount.zero {
+  color: #a3a3a3;
+}
+
+/* =============================================
+   PATIENT STATEMENTS STYLES
+   ============================================= */
+
+.patient-statements h2 span,
+.denial-management h2 span {
+  color: #06b6d4;
+}
+
+.statements-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.statements-list-section h3,
+.statements-summary-section h3 {
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+.statements-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.statements-empty .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.patient-balance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.patient-balance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 10px;
+}
+
+.patient-balance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.patient-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.invoice-count {
+  font-size: 0.85rem;
+  color: #737373;
+}
+
+.patient-balance-amount {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.balance-value {
+  font-weight: 700;
+  color: #f59e0b;
+  font-family: 'Fira Code', monospace;
+}
+
+.generate-btn {
+  padding: 8px 16px;
+  background: #06b6d4;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.generate-btn:hover {
+  background: #22d3ee;
+}
+
+.summary-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 10px;
+}
+
+.summary-icon {
+  font-size: 1.5rem;
+}
+
+.summary-data {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-value {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  color: #737373;
+}
+
+.batch-actions {
+  margin-top: 24px;
+}
+
+.batch-actions h4 {
+  margin: 0 0 12px;
+  color: #a3a3a3;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+/* Statement Preview */
+.statement-preview {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.preview-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.preview-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.statement-document {
+  background: #ffffff;
+  color: #000000;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.statement-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #000000;
+}
+
+.clinic-info h2 {
+  margin: 0 0 8px;
+  color: #000000;
+}
+
+.clinic-info p {
+  margin: 4px 0;
+  color: #333333;
+}
+
+.statement-meta h3 {
+  margin: 0 0 8px;
+  color: #000000;
+}
+
+.statement-meta p {
+  margin: 4px 0;
+  color: #333333;
+}
+
+.patient-info-section {
+  margin-bottom: 24px;
+}
+
+.patient-info-section h4 {
+  margin: 0 0 8px;
+  color: #666666;
+}
+
+.patient-name-large {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.statement-summary {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 2px solid #000;
+}
+
+.statement-details {
+  margin-bottom: 32px;
+}
+
+.statement-details h4 {
+  margin: 0 0 12px;
+  color: #000000;
+}
+
+.statement-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.statement-table th,
+.statement-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.statement-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+.statement-table .patient-resp {
+  font-weight: 700;
+}
+
+.statement-table tfoot td {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 2px solid #000;
+}
+
+.total-label {
+  text-align: right;
+}
+
+.statement-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.payment-options h4 {
+  margin: 0 0 12px;
+}
+
+.payment-options ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payment-options li {
+  padding: 4px 0;
+}
+
+.payment-reminder {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .statements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .patient-balance-item {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .patient-balance-amount {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* =============================================
+   DENIAL MANAGEMENT STYLES
+   ============================================= */
+
+.denial-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.denial-list-header h3 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.denial-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.denial-empty .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.denial-table-wrapper {
+  overflow-x: auto;
+}
+
+.denial-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.denial-table th,
+.denial-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #262626;
+}
+
+.denial-table th {
+  color: #737373;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.denial-row:hover {
+  background: #1a1a1a;
+}
+
+.action-btn {
+  padding: 6px 14px;
+  background: #262626;
+  color: #ffffff;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #404040;
+}
+
+.denial-detail .detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.denial-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.denial-card {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.denial-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.denial-card h4 {
+  margin: 0 0 16px;
+  color: #a3a3a3;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row span:first-child {
+  color: #737373;
+}
+
+.info-row .amount-value {
+  color: #f59e0b;
+  font-family: 'Fira Code', monospace;
+}
+
+.denial-reason-box {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.reason-code {
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 8px;
+  font-family: 'Fira Code', monospace;
+}
+
+.reason-text {
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.codes-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.appeal-actions h4 {
+  margin: 0 0 16px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.appeal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.appeal-form h4 {
+  margin: 0;
+}
+
+.appeal-form textarea {
+  width: 100%;
+  background: #171717;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 12px;
+  color: #ffffff;
+  resize: vertical;
+}
+
+.appeal-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.appeal-status h4 {
+  margin: 0 0 16px;
+}
+
+.status-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  padding-left: 8px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 28px;
+  width: 2px;
+  height: calc(100% + 8px);
+  background: #262626;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #262626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.timeline-item.completed .timeline-dot {
+  background: #10b981;
+  color: #0a0a0a;
+}
+
+.timeline-item.active .timeline-dot {
+  background: #f59e0b;
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline-content strong {
+  color: #ffffff;
+}
+
+.timeline-content span {
+  font-size: 0.85rem;
+  color: #737373;
+}
+
+/* Denial Analytics */
+.denial-analytics .analytics-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.analytics-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.analytics-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+}
+
+.analytics-icon {
+  font-size: 1.5rem;
+}
+
+.analytics-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.analytics-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.analytics-value.denied {
+  color: #ef4444;
+}
+
+.analytics-label {
+  font-size: 0.75rem;
+  color: #737373;
+  text-transform: uppercase;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.analytics-section {
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.analytics-section h4 {
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+.payer-denial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payer-denial-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #171717;
+  border-radius: 8px;
+}
+
+.payer-rank {
+  font-size: 0.8rem;
+  color: #737373;
+  font-weight: 700;
+  min-width: 24px;
+}
+
+.payer-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.payer-name {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.payer-count {
+  font-size: 0.8rem;
+  color: #737373;
+}
+
+.payer-amount {
+  font-weight: 700;
+  color: #ef4444;
+  font-family: 'Fira Code', monospace;
+}
+
+.reason-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reason-item {
+  padding: 12px;
+  background: #171717;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+}
+
+.reason-item .reason-code {
+  margin: 0;
+  min-width: 50px;
+}
+
+.reason-description {
+  color: #a3a3a3;
+  font-size: 0.9rem;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #737373;
+}
+
+@media (max-width: 768px) {
+  .denial-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .analytics-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
