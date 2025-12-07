@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "./api/client";
-import PatientSearch from "./components/PatientSearch";
+import EmployeeLookupForm from "./components/EmployeeLookupForm";
 import InsuranceSearch from "./components/InsuranceSearch";
-import NewPatientForm from "./components/NewPatientForm";
-import IntakePanel from "./components/IntakePanel";
 import EligibilityPanel from "./components/EligibilityPanel";
 import RoutingPanel from "./components/RoutingPanel";
 import SlotsList from "./components/SlotsList";
@@ -13,7 +11,6 @@ function App() {
   const [patients, setPatients] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [selectedInsurance, setSelectedInsurance] = useState(null);
-  const [showNewPatientForm, setShowNewPatientForm] = useState(false);
 
   const [workflowResult, setWorkflowResult] = useState(null);
   const [selectedSlotId, setSelectedSlotId] = useState(null);
@@ -33,7 +30,7 @@ function App() {
       setPatients(res.data);
     } catch (err) {
       console.error(err);
-      setError("Failed to load patients.");
+      setError("Failed to load employees.");
     }
   };
 
@@ -44,7 +41,7 @@ function App() {
     setSelectedSlotId(null);
 
     if (!selectedPatient || !selectedInsurance) {
-      setError("Please select a patient and insurance plan.");
+      setError("Please select an employee and insurance plan.");
       return;
     }
 
@@ -86,19 +83,11 @@ function App() {
     }
   };
 
-  const handleNewPatientCreated = (newPatient) => {
-    setPatients([...patients, newPatient]);
-    setSelectedPatient(newPatient);
-    setShowNewPatientForm(false);
-    setWorkflowResult(null);
-    setFollowUpResult(null);
-  };
-
-  // Reset all fields when patient is changed or cleared
-  const handlePatientSelect = (patient) => {
+  const handlePatientSelected = (patient) => {
     setSelectedPatient(patient);
-    // If patient is cleared, reset everything
     if (!patient) {
+      // Clear everything when patient is cleared
+      setSelectedInsurance(null);
       setWorkflowResult(null);
       setFollowUpResult(null);
       setSelectedSlotId(null);
@@ -106,7 +95,13 @@ function App() {
     }
   };
 
-  // Reset workflow when insurance is changed
+  const handlePatientCreated = (newPatient) => {
+    setPatients([...patients, newPatient]);
+    setSelectedPatient(newPatient);
+    setWorkflowResult(null);
+    setFollowUpResult(null);
+  };
+
   const handleInsuranceSelect = (insurance) => {
     setSelectedInsurance(insurance);
     if (!insurance || (selectedInsurance && insurance?.id !== selectedInsurance?.id)) {
@@ -122,30 +117,25 @@ function App() {
       <header className="app-header">
         <h1>Beam Front-Desk <span>Copilot</span></h1>
         <p className="subtitle">
-          Unified Intake → Eligibility → Smart Routing → Scheduling → Follow-up
+          Employee Lookup → Eligibility → Smart Routing → Scheduling → Follow-up
         </p>
       </header>
 
       <main className="app-main">
-        {showNewPatientForm ? (
+        {/* Step 1: Employee Lookup Form */}
+        <section className="card">
+          <EmployeeLookupForm
+            patients={patients}
+            onPatientSelected={handlePatientSelected}
+            onPatientCreated={handlePatientCreated}
+          />
+        </section>
+
+        {/* Step 2: Insurance Selection - Show only when patient is selected */}
+        {selectedPatient && (
           <section className="card">
-            <NewPatientForm
-              onPatientCreated={handleNewPatientCreated}
-              onCancel={() => setShowNewPatientForm(false)}
-            />
-          </section>
-        ) : (
-          <section className="card">
-            <h2>1. Select Patient & Insurance</h2>
-            
-            <div className="search-row">
-              <PatientSearch
-                patients={patients}
-                selectedPatient={selectedPatient}
-                onSelect={handlePatientSelect}
-                onCreateNew={() => setShowNewPatientForm(true)}
-              />
-              
+            <h2>2. Select Insurance Plan</h2>
+            <div className="insurance-section">
               <InsuranceSearch
                 selectedInsurance={selectedInsurance}
                 onSelect={handleInsuranceSelect}
@@ -166,11 +156,6 @@ function App() {
 
         {workflowResult && (
           <section className="grid">
-            <div className="card">
-              <h2>2. Auto-filled Intake</h2>
-              <IntakePanel intake={workflowResult.intake} />
-            </div>
-
             <div className="card">
               <h2>3. Eligibility</h2>
               <EligibilityPanel eligibility={workflowResult.eligibility} />
@@ -209,3 +194,4 @@ function App() {
 }
 
 export default App;
+

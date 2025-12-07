@@ -61,5 +61,54 @@
     "start": "2025-12-09T14:00:00Z",
     "slot_duration": 30,
     "patient_id": 1
+  },
+  {
+    "id": 10,
+    "status": "booked",
+    "start": "2025-12-12T09:00:00Z",
+    "slot_duration": 30,
+    "patient_id": 1
+  },
+  {
+    "id": 11,
+    "status": "available",
+    "start": "2025-12-12T10:00:00Z",
+    "slot_duration": 30,
+    "patient_id": null
+  },
+  {
+    "id": 12,
+    "status": "booked",
+    "start": "2025-12-12T11:00:00Z",
+    "slot_duration": 45,
+    "patient_id": 4
+  },
+  {
+    "id": 13,
+    "status": "available",
+    "start": "2025-12-12T14:00:00Z",
+    "slot_duration": 30,
+    "patient_id": null
+  },
+  {
+    "id": 14,
+    "status": "available",
+    "start": "2025-12-13T09:00:00Z",
+    "slot_duration": 30,
+    "patient_id": null
+  },
+  {
+    "id": 15,
+    "status": "available",
+    "start": "2025-12-13T10:30:00Z",
+    "slot_duration": 30,
+    "patient_id": null
+  },
+  {
+    "id": 16,
+    "status": "booked",
+    "start": "2025-12-13T14:00:00Z",
+    "slot_duration": 45,
+    "patient_id": 1
   }
 ]
