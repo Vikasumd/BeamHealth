@@ -7,15 +7,20 @@
     "serviceDate": "2024-11-15",
     "dueDate": "2024-12-15",
     "createdAt": "2024-11-16",
-    "amount": 450.00,
+    "amount": 450,
     "balance": 0,
-    "paidAmount": 450.00,
+    "paidAmount": 450,
     "status": "paid",
     "claimType": "medical",
     "payerName": "Blue Cross",
     "payerId": 1,
-    "cptCodes": ["99213", "85025"],
-    "icdCodes": ["J06.9"],
+    "cptCodes": [
+      "99213",
+      "85025"
+    ],
+    "icdCodes": [
+      "J06.9"
+    ],
     "description": "Office visit - Acute upper respiratory infection"
   },
   {
@@ -26,15 +31,22 @@
     "serviceDate": "2024-11-20",
     "dueDate": "2024-12-20",
     "createdAt": "2024-11-21",
-    "amount": 1250.00,
-    "balance": 1250.00,
+    "amount": 1250,
+    "balance": 1250,
     "paidAmount": 0,
     "status": "pending",
     "claimType": "medical",
     "payerName": "Aetna",
     "payerId": 2,
-    "cptCodes": ["99214", "93000", "36415"],
-    "icdCodes": ["I10", "E11.9"],
+    "cptCodes": [
+      "99214",
+      "93000",
+      "36415"
+    ],
+    "icdCodes": [
+      "I10",
+      "E11.9"
+    ],
     "description": "Comprehensive exam - Hypertension, Type 2 Diabetes"
   },
   {
@@ -45,15 +57,21 @@
     "serviceDate": "2024-11-22",
     "dueDate": "2024-12-22",
     "createdAt": "2024-11-23",
-    "amount": 875.00,
-    "balance": 875.00,
+    "amount": 875,
+    "balance": 875,
     "paidAmount": 0,
     "status": "denied",
     "claimType": "medical",
     "payerName": "Cigna",
     "payerId": 3,
-    "cptCodes": ["99215", "90837"],
-    "icdCodes": ["F32.1", "F41.1"],
+    "cptCodes": [
+      "99215",
+      "90837"
+    ],
+    "icdCodes": [
+      "F32.1",
+      "F41.1"
+    ],
     "description": "Psych evaluation - Major depressive disorder"
   },
   {
@@ -64,15 +82,20 @@
     "serviceDate": "2024-11-25",
     "dueDate": "2024-12-25",
     "createdAt": "2024-11-26",
-    "amount": 325.00,
-    "balance": 125.00,
-    "paidAmount": 200.00,
+    "amount": 325,
+    "balance": 125,
+    "paidAmount": 200,
     "status": "partial",
     "claimType": "medical",
     "payerName": "Blue Cross",
     "payerId": 1,
-    "cptCodes": ["99212", "81002"],
-    "icdCodes": ["N39.0"],
+    "cptCodes": [
+      "99212",
+      "81002"
+    ],
+    "icdCodes": [
+      "N39.0"
+    ],
     "description": "Follow-up visit - Urinary tract infection"
   },
   {
@@ -83,15 +106,22 @@
     "serviceDate": "2024-11-28",
     "dueDate": "2024-12-28",
     "createdAt": "2024-11-29",
-    "amount": 2100.00,
-    "balance": 2100.00,
+    "amount": 2100,
+    "balance": 2100,
     "paidAmount": 0,
     "status": "submitted",
     "claimType": "medical",
     "payerName": "Aetna",
     "payerId": 2,
-    "cptCodes": ["99204", "93306", "93320"],
-    "icdCodes": ["I25.10", "R00.0"],
+    "cptCodes": [
+      "99204",
+      "93306",
+      "93320"
+    ],
+    "icdCodes": [
+      "I25.10",
+      "R00.0"
+    ],
     "description": "Cardiology consult - Coronary artery disease"
   },
   {
@@ -102,15 +132,20 @@
     "serviceDate": "2024-12-01",
     "dueDate": "2024-12-31",
     "createdAt": "2024-12-02",
-    "amount": 550.00,
-    "balance": 550.00,
+    "amount": 550,
+    "balance": 550,
     "paidAmount": 0,
     "status": "draft",
     "claimType": "medical",
     "payerName": "UnitedHealthcare",
     "payerId": 5,
-    "cptCodes": ["99213", "71046"],
-    "icdCodes": ["J18.9"],
+    "cptCodes": [
+      "99213",
+      "71046"
+    ],
+    "icdCodes": [
+      "J18.9"
+    ],
     "description": "Office visit with chest X-ray - Pneumonia"
   },
   {
@@ -121,15 +156,20 @@
     "serviceDate": "2024-12-02",
     "dueDate": "2025-01-02",
     "createdAt": "2024-12-03",
-    "amount": 675.00,
-    "balance": 675.00,
+    "amount": 675,
+    "balance": 675,
     "paidAmount": 0,
     "status": "appealed",
     "claimType": "medical",
     "payerName": "Cigna",
     "payerId": 4,
-    "cptCodes": ["99214", "90834"],
-    "icdCodes": ["F32.1"],
+    "cptCodes": [
+      "99214",
+      "90834"
+    ],
+    "icdCodes": [
+      "F32.1"
+    ],
     "description": "Follow-up therapy session - Depression"
   },
   {
@@ -140,14 +180,17 @@
     "serviceDate": "2024-12-03",
     "dueDate": "2025-01-03",
     "createdAt": "2024-12-04",
-    "amount": 180.00,
+    "amount": 180,
     "balance": 0,
-    "paidAmount": 180.00,
+    "paidAmount": 180,
     "status": "paid",
     "claimType": "dental",
     "payerName": "Blue Cross",
     "payerId": 1,
-    "cptCodes": ["D0120", "D1110"],
+    "cptCodes": [
+      "D0120",
+      "D1110"
+    ],
     "icdCodes": [],
     "description": "Dental cleaning and exam"
   },
@@ -159,15 +202,20 @@
     "serviceDate": "2024-12-04",
     "dueDate": "2025-01-04",
     "createdAt": "2024-12-05",
-    "amount": 425.00,
-    "balance": 425.00,
-    "paidAmount": 0,
-    "status": "pending",
+    "amount": 425,
+    "balance": 106.25,
+    "paidAmount": 318.75,
+    "status": "partial",
     "claimType": "vision",
     "payerName": "Aetna",
     "payerId": 2,
-    "cptCodes": ["92004", "92015"],
-    "icdCodes": ["H52.1"],
+    "cptCodes": [
+      "92004",
+      "92015"
+    ],
+    "icdCodes": [
+      "H52.1"
+    ],
     "description": "Comprehensive eye exam - Myopia"
   },
   {
@@ -178,15 +226,22 @@
     "serviceDate": "2024-12-05",
     "dueDate": "2025-01-05",
     "createdAt": "2024-12-06",
-    "amount": 950.00,
-    "balance": 950.00,
-    "paidAmount": 0,
-    "status": "pending",
+    "amount": 950,
+    "balance": 237.5,
+    "paidAmount": 712.5,
+    "status": "partial",
     "claimType": "medical",
     "payerName": "UnitedHealthcare",
     "payerId": 5,
-    "cptCodes": ["99215", "80053", "83036"],
-    "icdCodes": ["E11.65", "I10"],
+    "cptCodes": [
+      "99215",
+      "80053",
+      "83036"
+    ],
+    "icdCodes": [
+      "E11.65",
+      "I10"
+    ],
     "description": "Diabetes management - Labs and comprehensive visit"
   },
   {
@@ -197,15 +252,20 @@
     "serviceDate": "2024-12-06",
     "dueDate": "2025-01-06",
     "createdAt": "2024-12-07",
-    "amount": 1500.00,
-    "balance": 1500.00,
+    "amount": 1500,
+    "balance": 1500,
     "paidAmount": 0,
     "status": "denied",
     "claimType": "medical",
     "payerName": "Cigna",
     "payerId": 3,
-    "cptCodes": ["99223", "94760"],
-    "icdCodes": ["J45.40"],
+    "cptCodes": [
+      "99223",
+      "94760"
+    ],
+    "icdCodes": [
+      "J45.40"
+    ],
     "description": "Hospital admission - Acute asthma exacerbation"
   },
   {
@@ -216,15 +276,65 @@
     "serviceDate": "2024-12-07",
     "dueDate": "2025-01-07",
     "createdAt": "2024-12-07",
-    "amount": 275.00,
-    "balance": 275.00,
-    "paidAmount": 0,
-    "status": "draft",
+    "amount": 275,
+    "balance": 68.75,
+    "paidAmount": 206.25,
+    "status": "partial",
     "claimType": "medical",
     "payerName": "Blue Cross",
     "payerId": 1,
-    "cptCodes": ["99213"],
-    "icdCodes": ["M54.5"],
+    "cptCodes": [
+      "99213"
+    ],
+    "icdCodes": [
+      "M54.5"
+    ],
     "description": "Office visit - Low back pain"
+  },
+  {
+    "id": 13,
+    "patientId": 4,
+    "patientName": "vikas patel",
+    "payerId": 2,
+    "payerName": "Aetna",
+    "serviceDate": "2025-12-07",
+    "dueDate": "2026-01-06",
+    "amount": 11212,
+    "claimType": "medical",
+    "cptCodes": [
+      "321"
+    ],
+    "icdCodes": [
+      "121"
+    ],
+    "description": "2121",
+    "status": "draft",
+    "invoiceNumber": "INV-2025-0915",
+    "createdAt": "2025-12-07",
+    "paidAmount": 0,
+    "balance": 11212
+  },
+  {
+    "id": 14,
+    "patientId": 4,
+    "patientName": "vikas patel",
+    "payerId": 1,
+    "payerName": "Blue Cross",
+    "serviceDate": "2025-12-07",
+    "dueDate": "2026-01-06",
+    "amount": 500,
+    "claimType": "medical",
+    "cptCodes": [
+      "9229"
+    ],
+    "icdCodes": [
+      "jois"
+    ],
+    "description": "test",
+    "status": "draft",
+    "invoiceNumber": "INV-2025-1377",
+    "createdAt": "2025-12-07",
+    "paidAmount": 0,
+    "balance": 500
   }
 ]

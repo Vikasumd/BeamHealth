@@ -52,6 +52,29 @@ body {
   font-weight: 400;
 }
 
+/* Global Back Link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #06b6d4;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 12px;
+  margin-bottom: 32px;
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.5);
+  transform: translateX(-4px);
+}
+
 .app-main {
   display: flex;
   flex-direction: column;
@@ -1686,8 +1709,10 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 400px;
+  flex: 1;
+  max-height: 520px; /* Matches approx height of right form */
   overflow-y: auto;
+  padding-right: 8px;
 }
 
 .invoice-select-item {
@@ -3150,6 +3175,145 @@ select:focus {
   }
   
   .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   INVOICE EDIT FORM STYLES
+   ============================================= */
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.header-actions .primary-btn,
+.header-actions .secondary-btn {
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  min-width: 160px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header-actions .cancel-btn {
+  background: #404040;
+}
+
+.header-actions .cancel-btn:hover {
+  background: #525252;
+}
+
+/* Back to List button - styled like Back to Home */
+.invoice-detail .back-btn,
+.denial-detail .back-btn,
+.statement-preview .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #06b6d4;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.invoice-detail .back-btn:hover,
+.denial-detail .back-btn:hover,
+.statement-preview .back-btn:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.5);
+  transform: translateX(-4px);
+}
+
+/* Inline Edit Fields */
+.edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edit-fields-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.edit-fields .field,
+.edit-fields-row .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-fields label,
+.edit-fields-row label {
+  font-size: 0.8rem;
+  color: #737373;
+  text-transform: uppercase;
+}
+
+.edit-fields input,
+.edit-fields select,
+.edit-fields-row input {
+  padding: 10px 12px;
+  background: #171717;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  color-scheme: dark;
+}
+
+/* Date input calendar icon - white */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.edit-fields input:focus,
+.edit-fields select:focus,
+.edit-fields-row input:focus {
+  border-color: #06b6d4;
+  outline: none;
+}
+
+.desc-textarea {
+  width: 100%;
+  padding: 12px;
+  background: #171717;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  resize: vertical;
+  margin-top: 8px;
+}
+
+.desc-textarea:focus {
+  border-color: #06b6d4;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .header-actions {
+    flex-wrap: wrap;
+  }
+  
+  .header-actions .primary-btn,
+  .header-actions .secondary-btn {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .edit-fields-row {
     grid-template-columns: 1fr;
   }
 }

@@ -15,7 +15,8 @@ import ERAImport from "../components/ERAImport";
 
 function InvoiceManagement() {
   const [activeTab, setActiveTab] = useState('list');
-  const [invoices, setInvoices] = useState([]);
+  const [invoices, setInvoices] = useState([]); // Filtered invoices for the list
+  const [allInvoices, setAllInvoices] = useState([]); // Unfiltered invoices for other tabs
   const [patients, setPatients] = useState([]);
   const [stats, setStats] = useState(null);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
@@ -32,12 +33,14 @@ function InvoiceManagement() {
   useEffect(() => {
     fetchStats();
     fetchPatients();
+    fetchAllInvoices(); // Fetch all data initially
   }, []);
 
   useEffect(() => {
     fetchInvoices();
   }, [filters]);
 
+  // Fetch filtered invoices
   const fetchInvoices = async () => {
     try {
       setLoading(true);
@@ -56,6 +59,16 @@ function InvoiceManagement() {
       setError("Failed to load invoices. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Fetch all invoices (unfiltered)
+  const fetchAllInvoices = async () => {
+    try {
+      const res = await api.get("/invoices");
+      setAllInvoices(res.data);
+    } catch (err) {
+      console.error("Error fetching all invoices:", err);
     }
   };
 
@@ -95,6 +108,7 @@ function InvoiceManagement() {
 
   const handleDataChange = () => {
     fetchInvoices();
+    fetchAllInvoices();
     fetchStats();
   };
 
@@ -142,12 +156,12 @@ function InvoiceManagement() {
         return (
           <section className="card">
             <PaymentPosting 
-              invoices={invoices}
+              invoices={allInvoices}
               onPaymentPosted={handleDataChange}
             />
             <div className="era-section">
               <ERAImport 
-                invoices={invoices}
+                invoices={allInvoices}
                 onPaymentsPosted={handleDataChange}
               />
             </div>
@@ -158,7 +172,7 @@ function InvoiceManagement() {
         return (
           <section className="card">
             <PatientStatements 
-              invoices={invoices}
+              invoices={allInvoices}
               patients={patients}
             />
           </section>
@@ -168,7 +182,7 @@ function InvoiceManagement() {
         return (
           <section className="card">
             <DenialManagement 
-              invoices={invoices}
+              invoices={allInvoices}
               onDataChange={handleDataChange}
             />
           </section>
@@ -177,7 +191,7 @@ function InvoiceManagement() {
       case 'dashboard':
         return (
           <section className="card">
-            <ARDashboard invoices={invoices} stats={stats} />
+            <ARDashboard invoices={allInvoices} stats={stats} />
           </section>
         );
       

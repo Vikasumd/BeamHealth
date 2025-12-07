@@ -2,7 +2,6 @@ import React from 'react';
 
 const tabs = [
   { id: 'list', label: 'Claims List', icon: '📋' },
-  { id: 'detail', label: 'Invoice Detail', icon: '📄' },
   { id: 'create', label: 'Create Invoice', icon: '➕' },
   { id: 'payment', label: 'Payment Posting', icon: '💳' },
   { id: 'statements', label: 'Patient Statements', icon: '📝' },
