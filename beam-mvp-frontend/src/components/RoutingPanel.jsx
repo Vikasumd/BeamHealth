@@ -7,9 +7,9 @@ function RoutingPanel({ routing }) {
         textAlign: 'center',
         padding: '20px',
         background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)',
-        border: '1px solid rgba(34, 197, 94, 0.2)'
+        border: '1px solid rgba(4, 120, 87, 0.3)'
       }}>
-        <p style={{ margin: 0, color: '#86efac', fontSize: '1rem', fontWeight: '600' }}>
+        <p style={{ margin: 0, color: '#047857', fontSize: '1rem', fontWeight: '600' }}>
           ✅ No routing needed. Insurance is eligible.
         </p>
       </div>
@@ -27,17 +27,17 @@ function RoutingPanel({ routing }) {
         borderRadius: '8px',
         marginBottom: '16px'
       }}>
-        <strong style={{ color: '#fca5a5', fontSize: '1.05rem' }}>
+        <strong style={{ color: '#991b1b', fontSize: '1.05rem' }}>
           {routing.message}
         </strong>
       </div>
 
       {routing.denialExplanation && (
         <div style={{ marginBottom: '16px' }}>
-          <p style={{ margin: '0 0 8px 0', color: '#9ca3af', fontSize: '0.85rem', fontWeight: '600' }}>
+          <p style={{ margin: '0 0 8px 0', color: '#4B5563', fontSize: '0.85rem', fontWeight: '600' }}>
             EXPLANATION:
           </p>
-          <p style={{ margin: 0, color: '#fca5a5' }}>
+          <p style={{ margin: 0, color: '#991b1b' }}>
             {routing.denialExplanation}
           </p>
         </div>
@@ -45,23 +45,23 @@ function RoutingPanel({ routing }) {
 
       {routing.alternativePlans && routing.alternativePlans.length > 0 && (
         <div style={{ marginBottom: '16px' }}>
-          <p style={{ margin: '0 0 12px 0', color: '#9ca3af', fontSize: '0.85rem', fontWeight: '600' }}>
+          <p style={{ margin: '0 0 12px 0', color: '#4B5563', fontSize: '0.85rem', fontWeight: '600' }}>
             ALTERNATIVE PLANS:
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {routing.alternativePlans.map(plan => (
               <div key={plan.id} style={{
                 padding: '12px',
-                background: 'rgba(59, 130, 246, 0.1)',
-                border: '1px solid rgba(59, 130, 246, 0.2)',
+                background: 'rgba(29, 78, 216, 0.1)',
+                border: '1px solid rgba(29, 78, 216, 0.3)',
                 borderRadius: '8px',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center'
               }}>
                 <div>
-                  <strong style={{ color: '#93c5fd' }}>{plan.payer}</strong>
-                  <div style={{ fontSize: '0.85rem', color: '#9ca3af', marginTop: '2px' }}>
+                  <strong style={{ color: '#1d4ed8' }}>{plan.payer}</strong>
+                  <div style={{ fontSize: '0.85rem', color: '#4B5563', marginTop: '2px' }}>
                     {plan.plan}
                   </div>
                 </div>
@@ -77,15 +77,15 @@ function RoutingPanel({ routing }) {
       {routing.selfPayEstimate && (
         <div style={{
           padding: '12px',
-          background: 'rgba(139, 92, 246, 0.1)',
-          border: '1px solid rgba(139, 92, 246, 0.2)',
+          background: 'rgba(109, 40, 217, 0.1)',
+          border: '1px solid rgba(109, 40, 217, 0.3)',
           borderRadius: '8px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-          <strong style={{ color: '#c4b5fd' }}>Self-Pay Estimate:</strong>
-          <span style={{ fontSize: '1.3rem', color: '#c4b5fd', fontWeight: '700' }}>
+          <strong style={{ color: '#6d28d9' }}>Self-Pay Estimate:</strong>
+          <span style={{ fontSize: '1.3rem', color: '#6d28d9', fontWeight: '700' }}>
             ${routing.selfPayEstimate}
           </span>
         </div>

@@ -18,7 +18,6 @@ function InvoiceNavTabs({ activeTab, onTabChange }) {
           className={`nav-tab ${activeTab === tab.id ? 'nav-tab--active' : ''}`}
           onClick={() => onTabChange(tab.id)}
         >
-          <span className="tab-icon">{tab.icon}</span>
           <span className="tab-label">{tab.label}</span>
         </button>
       ))}

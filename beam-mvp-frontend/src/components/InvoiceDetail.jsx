@@ -117,7 +117,6 @@ function InvoiceDetail({ invoice, onBack, onDataChange }) {
         <div className="header-left">
           <button className="back-btn" onClick={onBack}>← Back to List</button>
           <h2>{invoice.invoiceNumber}</h2>
-          {getStatusBadge(invoice.status)}
         </div>
         <div className="header-actions">
           {!isEditing ? (

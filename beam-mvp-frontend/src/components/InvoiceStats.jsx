@@ -19,7 +19,6 @@ function InvoiceStats({ stats }) {
   return (
     <div className="invoice-stats">
       <div className="stat-card">
-        <div className="stat-icon">📋</div>
         <div className="stat-content">
           <span className="stat-value">{stats.totalInvoices}</span>
           <span className="stat-label">Total Invoices</span>
@@ -27,7 +26,6 @@ function InvoiceStats({ stats }) {
       </div>
 
       <div className="stat-card">
-        <div className="stat-icon">💰</div>
         <div className="stat-content">
           <span className="stat-value outstanding">{formatCurrency(stats.totalOutstanding)}</span>
           <span className="stat-label">Outstanding</span>
@@ -35,7 +33,6 @@ function InvoiceStats({ stats }) {
       </div>
 
       <div className="stat-card">
-        <div className="stat-icon">⚠️</div>
         <div className="stat-content">
           <span className="stat-value overdue">{stats.overdueCount}</span>
           <span className="stat-label">Overdue</span>
@@ -43,7 +40,6 @@ function InvoiceStats({ stats }) {
       </div>
 
       <div className="stat-card">
-        <div className="stat-icon">✅</div>
         <div className="stat-content">
           <span className="stat-value paid">{formatCurrency(stats.paidThisMonth)}</span>
           <span className="stat-label">Paid This Month</span>

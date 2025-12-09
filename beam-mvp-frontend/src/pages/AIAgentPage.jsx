@@ -126,10 +126,7 @@ function AIAgentPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="landing-footer">
-        <p>© 2024 BeamHealth. Built for modern healthcare.</p>
-      </footer>
+
     </div>
   );
 }
