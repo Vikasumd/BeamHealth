@@ -17,7 +17,7 @@ function AboutPage() {
       {/* Navigation */}
       <nav className="landing-nav">
         <div className="nav-logo">
-            <span className="logo-icon">⚕️</span>
+
             <span className="logo-text">Beam<span>Health</span></span>
         </div>
         <div className="nav-links">
@@ -37,7 +37,7 @@ function AboutPage() {
                     to={`/${agent.id}`} 
                     className="nav-dropdown-item"
                   >
-                    <span className="dropdown-item-icon">{agent.icon}</span>
+
                     {agent.title}
                   </Link>
                 ))}

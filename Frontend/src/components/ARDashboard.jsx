@@ -1,4 +1,13 @@
 import React, { useMemo } from 'react';
+import { 
+  CurrencyDollarIcon, 
+  ClipboardDocumentListIcon, 
+  ExclamationTriangleIcon, 
+  CheckCircleIcon,
+  ChartBarIcon,
+  ChartPieIcon,
+  BuildingOfficeIcon
+} from "@heroicons/react/24/solid";
 
 function ARDashboard({ invoices, stats }) {
   const formatCurrency = (amount) => {
@@ -95,28 +104,28 @@ function ARDashboard({ invoices, stats }) {
       {/* Summary Cards */}
       <div className="ar-summary-cards">
         <div className="ar-card highlight">
-          <div className="ar-card-icon">💰</div>
+          <div className="ar-card-icon"><CurrencyDollarIcon className="icon-md" /></div>
           <div className="ar-card-content">
             <span className="ar-card-value">{formatCurrency(totalAR)}</span>
             <span className="ar-card-label">Total A/R</span>
           </div>
         </div>
         <div className="ar-card">
-          <div className="ar-card-icon">📋</div>
+          <div className="ar-card-icon"><ClipboardDocumentListIcon className="icon-md" /></div>
           <div className="ar-card-content">
             <span className="ar-card-value">{stats?.totalInvoices || 0}</span>
             <span className="ar-card-label">Total Claims</span>
           </div>
         </div>
         <div className="ar-card warning">
-          <div className="ar-card-icon">⚠️</div>
+          <div className="ar-card-icon"><ExclamationTriangleIcon className="icon-md" /></div>
           <div className="ar-card-content">
             <span className="ar-card-value">{stats?.overdueCount || 0}</span>
             <span className="ar-card-label">Overdue</span>
           </div>
         </div>
         <div className="ar-card success">
-          <div className="ar-card-icon">✅</div>
+          <div className="ar-card-icon"><CheckCircleIcon className="icon-md" /></div>
           <div className="ar-card-content">
             <span className="ar-card-value">{formatCurrency(stats?.paidThisMonth || 0)}</span>
             <span className="ar-card-label">Collected (Month)</span>
@@ -127,7 +136,7 @@ function ARDashboard({ invoices, stats }) {
       <div className="ar-grid">
         {/* Aging Buckets */}
         <div className="ar-section">
-          <h3>📊 Aging Buckets</h3>
+          <h3><ChartBarIcon className="section-icon-inline" /> Aging Buckets</h3>
           <div className="aging-table">
             <div className="aging-header">
               <span>Period</span>
@@ -159,7 +168,7 @@ function ARDashboard({ invoices, stats }) {
 
         {/* Status Distribution */}
         <div className="ar-section">
-          <h3>📈 Status Distribution</h3>
+          <h3><ChartPieIcon className="section-icon-inline" /> Status Distribution</h3>
           <div className="status-chart">
             {statusDistribution.map(item => (
               <div key={item.status} className="status-bar-item">
@@ -183,7 +192,7 @@ function ARDashboard({ invoices, stats }) {
 
         {/* Top Payers */}
         <div className="ar-section">
-          <h3>🏢 Top Payers</h3>
+          <h3><BuildingOfficeIcon className="section-icon-inline" /> Top Payers</h3>
           <div className="top-payers-list">
             {topPayers.map((payer, index) => (
               <div key={payer.name} className="payer-item">

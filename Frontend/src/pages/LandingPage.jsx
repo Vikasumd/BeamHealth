@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { 
+  HeartIcon, 
+  ClipboardDocumentCheckIcon, 
+  PencilSquareIcon, 
+  CurrencyDollarIcon, 
+  UserGroupIcon, 
+  WrenchScrewdriverIcon,
+  ChevronDownIcon,
+  UserIcon,
+  DocumentTextIcon,
+  ClockIcon,
+  PuzzlePieceIcon,
+  FaceSmileIcon
+} from "@heroicons/react/24/solid";
 
 function LandingPage() {
   const [showFeaturesDropdown, setShowFeaturesDropdown] = useState(false);
 
   const aiAgents = [
-    { id: "ai-intake", icon: "📋", title: "AI Intake" },
-    { id: "ai-scribe", icon: "✍️", title: "AI Scribe" },
-    { id: "ai-revenue", icon: "💰", title: "AI Revenue" },
-    { id: "ai-patient-acquisition", icon: "🎯", title: "AI Patient Acquisition" },
-    { id: "ai-support", icon: "🛠️", title: "AI Support" }
+    { id: "ai-intake", icon: <ClipboardDocumentCheckIcon className="icon-sm" />, title: "AI Intake" },
+    { id: "ai-scribe", icon: <PencilSquareIcon className="icon-sm" />, title: "AI Scribe" },
+    { id: "ai-revenue", icon: <CurrencyDollarIcon className="icon-sm" />, title: "AI Revenue" },
+    { id: "ai-patient-acquisition", icon: <UserGroupIcon className="icon-sm" />, title: "AI Patient Acquisition" },
+    { id: "ai-support", icon: <WrenchScrewdriverIcon className="icon-sm" />, title: "AI Support" }
   ];
 
   return (
@@ -17,7 +31,7 @@ function LandingPage() {
       {/* Navigation */}
       <nav className="landing-nav">
         <div className="nav-logo">
-            <span className="logo-icon">⚕️</span>
+            <HeartIcon className="logo-icon-svg" />
             <span className="logo-text">Beam<span>Health</span></span>
         </div>
         <div className="nav-links">
@@ -27,7 +41,7 @@ function LandingPage() {
             onMouseLeave={() => setShowFeaturesDropdown(false)}
           >
             <span className="nav-dropdown-trigger">
-              Features <span className="dropdown-arrow">▾</span>
+              Features <ChevronDownIcon className="dropdown-arrow-svg" />
             </span>
             {showFeaturesDropdown && (
               <div className="nav-dropdown">
@@ -72,11 +86,11 @@ function LandingPage() {
 
           <div className="hero-buttons">
             <Link to="/workflow" className="btn-primary">
-              <span className="btn-icon">👤</span>
+              <UserIcon className="btn-icon-svg" />
               Employee Workflow
             </Link>
             <Link to="/invoices" className="btn-secondary">
-              <span className="btn-icon">📄</span>
+              <DocumentTextIcon className="btn-icon-svg" />
               Invoice Management
             </Link>
           </div>
@@ -94,21 +108,21 @@ function LandingPage() {
             {/* Card 1 */}
             <div className="bento-card">
               <div className="card-glow-cyan"></div>
-              <div className="bento-icon">⏱️</div>
+              <div className="bento-icon"><ClockIcon className="bento-icon-svg" /></div>
               <h3>Reduce EMR time &<br/>administrative burden</h3>
               <p>Beam's AI-powered workflows cut documentation, billing, and intake time by up to 99%, freeing clinicians from tedious data entry.</p>
             </div>
 
             {/* Card 2 */}
             <div className="bento-card">
-              <div className="bento-icon">🧩</div>
+              <div className="bento-icon"><PuzzlePieceIcon className="bento-icon-svg" /></div>
               <h3>Integrate across<br/>fragmented systems</h3>
               <p>Unlike clunky point solutions, Beam embeds directly into existing clinical systems, creating a unified, effortless data flow.</p>
             </div>
 
             {/* Card 3 */}
             <div className="bento-card bento-card-highlight">
-              <div className="bento-icon">👨‍⚕️</div>
+              <div className="bento-icon"><FaceSmileIcon className="bento-icon-svg" /></div>
               <h3>Restore focus<br/>to patient care</h3>
               <p>By eliminating administrative overhead, Beam empowers clinicians to spend more meaningful time with patients.</p>
             </div>

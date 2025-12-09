@@ -150,6 +150,33 @@
   font-size: 1.25rem;
 }
 
+.icon-sm {
+  width: 20px;
+  height: 20px;
+  color: #FF6B4A;
+}
+
+.logo-icon-svg {
+  width: 28px;
+  height: 28px;
+  color: #FF6B4A;
+}
+
+.dropdown-arrow-svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown-wrapper:hover .dropdown-arrow-svg {
+  transform: rotate(180deg);
+}
+
+.btn-icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* Main Content */
 .landing-main {
   display: grid;
@@ -495,6 +522,12 @@
 .bento-icon-sm {
   font-size: 1.5rem;
   margin-bottom: 8px;
+}
+
+.bento-icon-svg {
+  width: 32px;
+  height: 32px;
+  color: #FF6B4A;
 }
 
 .bento-card h3 {

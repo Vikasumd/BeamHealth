@@ -1,166 +1,212 @@
-# BeamHealth MVP
+# BeamHealth MVP Backend
 
-A Node.js backend application for healthcare workflow management including patient intake, insurance eligibility verification, patient routing, appointment scheduling, and follow-up management.
+A robust Node.js backend application designed for healthcare workflow management. It facilitates patient intake, insurance eligibility verification, appointment scheduling, smart routing, and invoice management.
 
-## Architecture
+## 🏗 System Architecture
 
-This project follows **Clean Architecture** principles with clear separation of concerns:
+The project is structured using **Clean Architecture** principles, ensuring a separation of concerns between data, business logic, and API layers.
 
-- **Data Layer**: Entity models and repositories for data access
-- **Business Logic Layer**: Services containing core business logic (SOLID principles)
-- **API Layer**: Controllers and routes for HTTP endpoints
-- **Utilities**: Shared helper functions
+-   **API Layer** (`routes/`, `controllers/`): Handles HTTP requests and response formatting.
+-   **Business Logic Layer** (`services/`): Contains the core business rules (e.g., eligibility checks, workflow orchestration).
+-   **Data Access Layer** (`repositories/`, `data/`): Manages data persistence using JSON files to simulate a database.
+-   **Models** (`models/`): Defines the data structures and schemas.
 
-### SOLID Principles Applied
-
-- **S** - Single Responsibility: Each entity model has one clear purpose
-- **O** - Open/Closed: Services can be extended through composition
-- **L** - Liskov Substitution: Repositories follow consistent interfaces
-- **I** - Interface Segregation: Controllers are thin and focused
-- **D** - Dependency Inversion: Services depend on repository abstractions
-
-## Project Structure
+## 📂 Project Structure
 
 ```
 beam-mvp/
 ├── src/
+│   ├── app.js                 # Express application setup
 │   ├── server.js              # Server entry point
-│   ├── app.js                 # Express app configuration
 │   │
-│   ├── data/                  # EMR simulation data
-│   │   ├── patients.json
-│   │   ├── appointments.json
-│   │   └── insurances.json
-│   │
-│   ├── models/                # Entity models
-│   │   ├── Patient.js
-│   │   ├── Appointment.js
-│   │   └── Insurance.js
-│   │
-│   ├── repositories/          # Data access layer
-│   │   ├── patientRepository.js
-│   │   ├── appointmentRepository.js
-│   │   └── insuranceRepository.js
-│   │
-│   ├── services/              # Core business logic
-│   │   ├── intakeService.js
-│   │   ├── eligibilityService.js
-│   │   ├── routingService.js
-│   │   ├── schedulingService.js
-│   │   └── followUpService.js
-│   │
-│   ├── controllers/           # Route handlers
-│   │   ├── workflowController.js
-│   │   ├── patientController.js
-│   │   └── appointmentController.js
-│   │
-│   ├── routes/                # Express routes
-│   │   ├── workflowRoutes.js
-│   │   ├── patientRoutes.js
-│   │   └── appointmentRoutes.js
-│   │
-│   └── utils/                 # Helper utilities
-│       ├── fileUtil.js
-│       └── formatter.js
+│   ├── controllers/           # Request handlers (Workflow, Invoice)
+│   ├── services/              # Business logic (Intake, Eligibility, Scheduling)
+│   ├── repositories/          # Data access patterns
+│   ├── routes/                # detailed API route definitions
+│   ├── models/                # Class definitions for entities
+│   ├── data/                  # JSON storage (The "Database")
+│   └── utils/                 # Helpers (File I/O, Formatters)
 │
-├── package.json
-└── README.md
+└── package.json
 ```
 
-## Installation
+## 🚀 Getting Started
 
-```bash
-# Install dependencies
-npm install
+### Prerequisites
+-   Node.js (v16 or higher)
+-   npm
+
+### Installation
+
+1.  Navigate to the directory:
+    ```bash
+    cd Backend
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Server
+
+-   **Development Mode** (Hot Reload):
+    ```bash
+    npm run dev
+    ```
+-   **Production Mode**:
+    ```bash
+    npm start
+    ```
+
+The server runs on **http://localhost:4000**.
+
+---
+
+## 📡 API Documentation
+
+### 👤 Patients API
+**Base URL:** `/patients`
+
+| Method | Endpoint | Description | Payload |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/` | Retrieve all patients. | - |
+| `GET` | `/:id` | Retrieve a specific patient by ID. | - |
+| `POST` | `/` | Create a new patient. | JSON Body (see below) |
+
+**Create Patient Payload:**
+```json
+{
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "dob": "1995-05-20",
+  "email": "jane.doe@example.com",
+  "phone": "555-0199",
+  "gender": "F"
+}
 ```
 
-## Running the Application
+### 🏥 Insurances API
+**Base URL:** `/insurances`
 
-```bash
-# Development mode (with auto-reload)
-npm run dev
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/` | List all insurance providers. |
+| `GET` | `/:id` | Get details of a specific provider. |
 
-# Production mode
-npm start
+### 📅 Appointments API
+**Base URL:** `/appointments`
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/available` | Get all available (unbooked) appointment slots. |
+
+### 🔄 Workflow API
+**Base URL:** `/workflow`
+
+These endpoints orchestrate complex multi-step processes.
+
+#### 1. Run Unified Flow
+**Endpoint:** `POST /workflow/run`
+**Description:** Performs Intake, checks Eligibility, calculates Routing (if denied), and returns Available Slots.
+
+**Request:**
+```json
+{
+  "patientId": 1,
+  "insuranceId": 1
+}
 ```
 
-The server will start on `http://localhost:3000`
-
-## API Endpoints
-
-### Patient Endpoints
-
-- `GET /api/patients` - Get all patients
-- `GET /api/patients/:id` - Get patient by ID
-- `POST /api/patients` - Create new patient
-- `PUT /api/patients/:id` - Update patient
-- `DELETE /api/patients/:id` - Delete patient
-
-### Appointment Endpoints
-
-- `GET /api/appointments` - Get all appointments
-- `GET /api/appointments/:id` - Get appointment by ID
-- `POST /api/appointments` - Create new appointment
-- `PUT /api/appointments/:id` - Update appointment
-- `DELETE /api/appointments/:id` - Delete appointment
-
-### Workflow Endpoints
-
-- `POST /api/workflow/intake` - Complete patient intake process
-- `POST /api/workflow/schedule` - Schedule appointment with eligibility check
-
-## Usage Examples
-
-### Create a Patient
-
-```bash
-curl -X POST http://localhost:3000/api/patients \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "John Doe",
-    "dateOfBirth": "1990-01-01",
-    "phone": "555-0123",
-    "email": "john.doe@example.com"
-  }'
+**Response:**
+```json
+{
+  "intake": { ... },       // Patient details
+  "eligibility": { ... },  // Eligibility status
+  "routing": null,         // Alternative plans if not eligible
+  "availableSlots": [ ... ]
+}
 ```
 
-### Complete Intake Workflow
+#### 2. Book & Follow-Up
+**Endpoint:** `POST /workflow/book`
+**Description:** Books a slot and generates post-visit follow-up tasks.
 
-```bash
-curl -X POST http://localhost:3000/api/workflow/intake \
-  -H "Content-Type: application/json" \
-  -d '{
-    "patientData": {
-      "name": "Jane Smith",
-      "dateOfBirth": "1985-05-15",
-      "phone": "555-0456"
-    },
-    "insuranceData": {
-      "provider": "Blue Cross Blue Shield",
-      "policyNumber": "12345"
-    }
-  }'
+**Request:**
+```json
+{
+  "appointmentId": 13,
+  "patientId": 1,
+  "insuranceId": 1
+}
 ```
 
-### Schedule Appointment with Eligibility Check
+### 💰 Invoices API
+**Base URL:** `/invoices`
 
-```bash
-curl -X POST http://localhost:3000/api/workflow/schedule \
-  -H "Content-Type: application/json" \
-  -d '{
-    "patientId": "1",
-    "appointmentType": "consultation",
-    "preferredDate": "2025-12-15"
-  }'
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/` | Get invoices. Supports query filters: `status`, `claimType`, `search`, `startDate`, `endDate`. |
+| `GET` | `/stats` | Get dashboard statistics (total, overdue, paid this month). |
+| `GET` | `/:id` | Get single invoice details. |
+| `GET` | `/patient/:patientId` | Get invoices for a specific patient. |
+| `POST` | `/` | Create a new invoice. |
+| `PUT` | `/:id` | Update an invoice. |
+| `DELETE` | `/:id` | Delete an invoice. |
+
+---
+
+## 💾 Data Models
+
+The application uses the following data structures, stored in `src/data/`.
+
+### Patient
+```json
+{
+  "id": "number",
+  "first_name": "string",
+  "last_name": "string",
+  "dob": "YYYY-MM-DD",
+  "email": "string",
+  "phone": "string",
+  "gender": "M|F"
+}
 ```
 
-## Technologies Used
+### Insurance
+```json
+{
+  "id": "number",
+  "payer": "string (e.g., 'Blue Cross')",
+  "plan": "string",
+  "eligible": "boolean",
+  "coPay": "number | null",
+  "reason": "string | null (denial reason)"
+}
+```
 
-- **Express.js** - Web framework
-- **CORS** - Cross-origin resource sharing
-- **dotenv** - Environment variable management
-- **Nodemon** - Development auto-reload
+### Appointment
+```json
+{
+  "id": "number",
+  "status": "booked | available",
+  "start": "ISO String (e.g., '2025-12-10T09:00:00Z')",
+  "slot_duration": "number (minutes)",
+  "patient_id": "number | null"
+}
+```
 
-## License
-
-ISC
+### Invoice
+```json
+{
+  "id": "number",
+  "invoiceNumber": "string (generated)",
+  "patientId": "number",
+  "patientName": "string",
+  "amount": "number",
+  "status": "paid | pending | denied | partial | submitted | draft",
+  "claimType": "medical | dental | vision",
+  "payerName": "string",
+  "cptCodes": ["string"],
+  "icdCodes": ["string"]
+}
+```

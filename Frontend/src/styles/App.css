@@ -1709,11 +1709,17 @@ select:focus {
    ============================================= */
 
 .create-invoice h2,
-.payment-posting h2,
-.ar-dashboard h2 {
+.payment-posting h2 {
   margin: 0 0 8px;
   font-size: 1.5rem;
   color: #ffffff;
+}
+
+.ar-dashboard h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 800;
 }
 
 .section-subtitle {

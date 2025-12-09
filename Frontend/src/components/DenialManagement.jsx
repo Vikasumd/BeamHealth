@@ -1,5 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import api from '../api/client';
+import { 
+  XCircleIcon, 
+  CurrencyDollarIcon, 
+  ClipboardDocumentListIcon, 
+  ChartBarIcon, 
+  CheckCircleIcon, 
+  PencilSquareIcon,
+  PhoneIcon,
+  ArrowPathIcon,
+  ClockIcon,
+  MinusCircleIcon
+} from "@heroicons/react/24/solid";
 
 // Common denial reason codes (CARC - Claim Adjustment Reason Codes)
 const DENIAL_REASONS = [
@@ -113,13 +125,14 @@ function DenialManagement({ invoices, onDataChange }) {
           className="secondary-btn"
           onClick={() => setActiveView('analytics')}
         >
-          📊 View Analytics
+          <ChartBarIcon className="btn-icon-svg" /> View Analytics
         </button>
       </div>
 
       {deniedInvoices.length === 0 ? (
         <div className="denial-empty">
-          <div className="empty-icon">✅</div>
+          <div className="empty-icon"><CheckCircleIcon className="icon-lg-success" /></div>
+
           <h3>No Denied Claims</h3>
           <p>Great news! You don't have any denied claims at the moment.</p>
         </div>
@@ -240,13 +253,13 @@ function DenialManagement({ invoices, onDataChange }) {
                       className="primary-btn"
                       onClick={() => setShowAppealForm(true)}
                     >
-                      📝 File Appeal
+                      <PencilSquareIcon className="btn-icon-svg" /> File Appeal
                     </button>
                     <button className="secondary-btn">
-                      📞 Contact Payer
+                      <PhoneIcon className="btn-icon-svg" /> Contact Payer
                     </button>
                     <button className="secondary-btn">
-                      🔄 Resubmit Claim
+                      <ArrowPathIcon className="btn-icon-svg" /> Resubmit Claim
                     </button>
                   </div>
                 </div>
@@ -302,21 +315,21 @@ function DenialManagement({ invoices, onDataChange }) {
               <h4>Appeal Status</h4>
               <div className="status-timeline">
                 <div className="timeline-item completed">
-                  <div className="timeline-dot">✓</div>
+                  <div className="timeline-dot"><CheckCircleIcon className="icon-sm" /></div>
                   <div className="timeline-content">
                     <strong>Denial Received</strong>
                     <span>Original claim denied by payer</span>
                   </div>
                 </div>
                 <div className="timeline-item completed">
-                  <div className="timeline-dot">✓</div>
+                  <div className="timeline-dot"><CheckCircleIcon className="icon-sm" /></div>
                   <div className="timeline-content">
                     <strong>Appeal Submitted</strong>
                     <span>Appeal filed with supporting documentation</span>
                   </div>
                 </div>
                 <div className="timeline-item active">
-                  <div className="timeline-dot">⏳</div>
+                  <div className="timeline-dot"><ClockIcon className="icon-sm" /></div>
                   <div className="timeline-content">
                     <strong>Under Review</strong>
                     <span>Payer is reviewing the appeal</span>
@@ -348,28 +361,28 @@ function DenialManagement({ invoices, onDataChange }) {
 
       <div className="analytics-summary">
         <div className="analytics-card">
-          <span className="analytics-icon">❌</span>
+
           <div className="analytics-content">
             <span className="analytics-value">{analytics.totalDenied}</span>
             <span className="analytics-label">Denied Claims</span>
           </div>
         </div>
         <div className="analytics-card">
-          <span className="analytics-icon">💰</span>
+
           <div className="analytics-content">
             <span className="analytics-value denied">{formatCurrency(analytics.totalDeniedAmount)}</span>
             <span className="analytics-label">Denied Amount</span>
           </div>
         </div>
         <div className="analytics-card">
-          <span className="analytics-icon">📝</span>
+
           <div className="analytics-content">
             <span className="analytics-value">{analytics.totalAppealed}</span>
             <span className="analytics-label">Under Appeal</span>
           </div>
         </div>
         <div className="analytics-card">
-          <span className="analytics-icon">📊</span>
+
           <div className="analytics-content">
             <span className="analytics-value">
               {analytics.totalDenied > 0 

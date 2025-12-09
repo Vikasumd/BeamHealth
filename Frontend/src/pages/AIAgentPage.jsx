@@ -48,7 +48,7 @@ function AIAgentPage() {
         <nav className="landing-nav">
           <div className="nav-logo">
             <Link to="/" className="logo-link">
-              <span className="logo-icon">⚕️</span>
+
               <span className="logo-text">Beam<span>Health</span></span>
             </Link>
           </div>
@@ -69,7 +69,7 @@ function AIAgentPage() {
       <nav className="landing-nav">
         <div className="nav-logo">
           <Link to="/" className="logo-link">
-            <span className="logo-icon">⚕️</span>
+
             <span className="logo-text">Beam<span>Health</span></span>
           </Link>
         </div>
@@ -90,7 +90,7 @@ function AIAgentPage() {
                     to={`/${a.id}`} 
                     className={`nav-dropdown-item ${a.id === agentId ? 'active' : ''}`}
                   >
-                    <span className="dropdown-item-icon">{a.icon}</span>
+
                     {a.title}
                   </Link>
                 ))}
@@ -110,14 +110,14 @@ function AIAgentPage() {
           </Link>
 
           <div className="agent-hero">
-            <div className="agent-icon-large">{agent.icon}</div>
+
             <h2>{agent.title}</h2>
             <p className="agent-description">{agent.description}</p>
           </div>
 
           <div className="founder-letter">
             <div className="coming-soon-content">
-              <div className="coming-soon-icon">🚧</div>
+
               <h3>Coming Soon</h3>
               <p>
                 We're building {agent.title} to revolutionize your healthcare practice.

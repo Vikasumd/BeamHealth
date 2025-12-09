@@ -1,4 +1,14 @@
 import React, { useState, useMemo } from 'react';
+import { 
+  PrinterIcon, 
+  EnvelopeIcon, 
+  CreditCardIcon, 
+  PhoneIcon, 
+  CheckCircleIcon,
+  UsersIcon,
+  CurrencyDollarIcon,
+  DocumentTextIcon 
+} from "@heroicons/react/24/solid";
 
 function PatientStatements({ invoices, patients }) {
   const [selectedPatient, setSelectedPatient] = useState(null);
@@ -61,10 +71,10 @@ function PatientStatements({ invoices, patients }) {
           </button>
           <div className="preview-buttons">
             <button className="secondary-btn" onClick={handlePrint}>
-              🖨️ Print
+              <PrinterIcon className="btn-icon-svg" /> Print
             </button>
             <button className="primary-btn">
-              📧 Email Statement
+              <EnvelopeIcon className="btn-icon-svg" /> Email Statement
             </button>
           </div>
         </div>
@@ -146,9 +156,9 @@ function PatientStatements({ invoices, patients }) {
             <div className="payment-options">
               <h4>Payment Options</h4>
               <ul>
-                <li>💳 Pay online at www.beamhealth.com/pay</li>
-                <li>📞 Call (555) 123-4567 to pay by phone</li>
-                <li>✉️ Mail check to address above</li>
+                <li><CreditCardIcon className="list-icon-inline" style={{width:16, display:'inline'}} /> Pay online at www.beamhealth.com/pay</li>
+                <li><PhoneIcon className="list-icon-inline" style={{width:16, display:'inline'}} /> Call (555) 123-4567 to pay by phone</li>
+                <li><EnvelopeIcon className="list-icon-inline" style={{width:16, display:'inline'}} /> Mail check to address above</li>
               </ul>
             </div>
             <div className="payment-reminder">
@@ -172,7 +182,8 @@ function PatientStatements({ invoices, patients }) {
           
           {patientBalances.length === 0 ? (
             <div className="statements-empty">
-              <div className="empty-icon">✅</div>
+              <div className="empty-icon"><CheckCircleIcon className="icon-lg-success" /></div>
+
               <h4>No Outstanding Balances</h4>
               <p>All patient accounts are current.</p>
             </div>
@@ -203,14 +214,16 @@ function PatientStatements({ invoices, patients }) {
           <h3>Statement Summary</h3>
           <div className="summary-cards">
             <div className="summary-card">
-              <span className="summary-icon">👥</span>
+              <span className="summary-icon"><UsersIcon className="icon-md" /></span>
+
               <div className="summary-data">
                 <span className="summary-value">{patientBalances.length}</span>
                 <span className="summary-label">Patients with Balance</span>
               </div>
             </div>
             <div className="summary-card">
-              <span className="summary-icon">💰</span>
+              <span className="summary-icon"><CurrencyDollarIcon className="icon-md" /></span>
+
               <div className="summary-data">
                 <span className="summary-value">
                   {formatCurrency(patientBalances.reduce((sum, p) => sum + p.totalBalance, 0))}
@@ -219,7 +232,7 @@ function PatientStatements({ invoices, patients }) {
               </div>
             </div>
             <div className="summary-card">
-              <span className="summary-icon">📄</span>
+              <span className="summary-icon"><DocumentTextIcon className="icon-md" /></span>
               <div className="summary-data">
                 <span className="summary-value">
                   {patientBalances.reduce((sum, p) => sum + p.invoices.length, 0)}
@@ -232,10 +245,10 @@ function PatientStatements({ invoices, patients }) {
           <div className="batch-actions">
             <h4>Batch Actions</h4>
             <button className="secondary-btn full-width">
-              📧 Send All Statements via Email
+              <EnvelopeIcon className="btn-icon-svg" /> Send All Statements via Email
             </button>
             <button className="secondary-btn full-width">
-              🖨️ Print All Statements
+              <PrinterIcon className="btn-icon-svg" /> Print All Statements
             </button>
           </div>
         </div>
