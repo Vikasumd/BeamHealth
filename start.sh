@@ -23,7 +23,7 @@ trap cleanup SIGINT SIGTERM
 
 # Install backend dependencies if needed
 echo -e "${GREEN}Checking Backend dependencies...${NC}"
-cd beam-mvp
+cd Backend
 if [ ! -d "node_modules" ]; then
     echo -e "${BLUE}Installing backend dependencies...${NC}"
     npm install
@@ -32,7 +32,7 @@ cd ..
 
 # Install frontend dependencies if needed
 echo -e "${GREEN}Checking Frontend dependencies...${NC}"
-cd beam-mvp-frontend
+cd Frontend
 if [ ! -d "node_modules" ]; then
     echo -e "${BLUE}Installing frontend dependencies...${NC}"
     npm install
@@ -42,8 +42,8 @@ cd ..
 echo ""
 
 # Start backend
-echo -e "${GREEN}Starting Backend (beam-mvp)...${NC}"
-cd beam-mvp
+echo -e "${GREEN}Starting Backend...${NC}"
+cd Backend
 npm run dev &
 BACKEND_PID=$!
 cd ..
@@ -52,8 +52,8 @@ cd ..
 sleep 2
 
 # Start frontend
-echo -e "${GREEN}Starting Frontend (beam-mvp-frontend)...${NC}"
-cd beam-mvp-frontend
+echo -e "${GREEN}Starting Frontend...${NC}"
+cd Frontend
 npm run dev &
 FRONTEND_PID=$!
 cd ..
